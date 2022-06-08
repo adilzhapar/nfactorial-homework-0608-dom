@@ -14,15 +14,15 @@
         <p id="artist">Lorem Ipsum</p>
     </header>
     <div class="video">
-        <video src="mp4/chill.mp4" muted autoplay width="60%"></video>        
+        <video id="video" src="mp4/chill.mp4" muted autoplay width="60%"></video>        
     </div>
 
     <div class="buttons">
-        <div><i class="fa-solid fa-backward-step" onclick="prevTrack()"></i></div>
-        <div><i class="fa-solid fa-play" onclick="playpauseTrack()"></i></div>
+        <div class="backward" onclick="prevTrack()"><i class="fa-solid fa-backward-step"></i></div>
+        <div  class="play" onclick="playpauseTrack()"><i class="fa-solid fa-play" ></i></div>
         <!-- <div><i class="fa-solid fa-pause"></i></div> -->
-        <div><i class="fa-solid fa-forward-step" onclick="nextTrack()"></i></div>
-        <div><i class="fa-solid fa-volume-xmark" onclick="mute()"></i></div>
+        <div  class="forward" onclick="nextTrack()"><i class="fa-solid fa-forward-step"></i></div>
+        <div class="mute" onclick="muteUnmute()"><i class="fa-solid fa-volume-xmark" ></i></div>
         
     </div>
 

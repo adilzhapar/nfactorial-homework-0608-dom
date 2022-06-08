@@ -1,10 +1,11 @@
 let artist = document.querySelector("#artist");
 let name = document.querySelector("#track-name");
+let video = document.querySelector("#video");
 
-let playPauseBtn = document.querySelector(".fa-play");  
-let nextBtn = document.querySelector(".fa-forward-step");
-let prevBtn = document.querySelector(".fa-backward-step");
-let mute = document.querySelector("fa-volume-xmark");
+let playPauseBtn = document.querySelector(".play");  
+let nextBtn = document.querySelector(".forward");
+let prevBtn = document.querySelector(".backward");
+let mute = document.querySelector(".mute");
 
 let seek_slider = document.querySelector(".seek_slider");
 let volume_slider = document.querySelector(".volume_slider");
@@ -14,6 +15,8 @@ let ttl_duration = document.querySelector(".total-duration");
 let isPlaying = false;
 let trackIndex = 0;
 let updateTimer;
+let vol;
+let isMuted = false;
 
 let curr_track = document.createElement('audio');
 
@@ -35,7 +38,7 @@ let track_list = [
         name: "In da club",
         artist: "50 Cent",
         video: "mp4/in-da-club.mp4",
-        audio: "mp3/ib-da-club.mp3"
+        audio: "mp3/in-da-club.mp3"
     },
 ];
 
@@ -46,6 +49,7 @@ const loadTrack = (trackIndex) => {
     curr_track.src = track_list[trackIndex].audio;
     curr_track.load();
 
+    video.src = track_list[trackIndex].video;
     name.textContent = track_list[trackIndex].name;
     artist.textContent = track_list[trackIndex].artist;
 
@@ -94,6 +98,31 @@ function prevTrack() {
     playTrack();
 }
 
+function muteUnmute() {
+    if(!isMuted){
+        muting();
+    }else{
+        unmuting();
+    }
+}
+
+function muting() {
+    vol = volume_slider.value;
+    volume_slider.value = "0";
+    curr_track.volume = volume_slider.value;
+    mute.innerHTML = `<i class="fa-solid fa-volume-up"></i>`;
+    isMuted = true;
+}
+
+function unmuting(){
+    isMuted = false;
+    volume_slider.value = vol;
+    curr_track.volume = volume_slider.value / 100;
+    mute.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+}
+
+
+
 function seekTo() {
     let seekto = curr_track.duration * (seek_slider.value / 100);
     curr_track.currentTime = seekto;
@@ -122,7 +151,7 @@ function seekUpdate() {
       if (durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
   
       curr_time.textContent = currentMinutes + ":" + currentSeconds;
-      total_duration.textContent = durationMinutes + ":" + durationSeconds;
+      ttl_duration.textContent = durationMinutes + ":" + durationSeconds;
     }
 }
 
