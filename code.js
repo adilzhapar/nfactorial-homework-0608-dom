@@ -74,10 +74,12 @@ function playTrack() {
     curr_track.play();
     isPlaying = true;
     playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    video.play();
 }
 
 function pauseTrack() {
     curr_track.pause();
+    video.pause();
     isPlaying = false;
     playPauseBtn.innerHTML = '<i class="fa-solid fa-play">'
 }
