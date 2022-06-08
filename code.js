@@ -108,8 +108,8 @@ function muteUnmute() {
 
 function muting() {
     vol = volume_slider.value;
-    volume_slider.value = "0";
-    curr_track.volume = volume_slider.value;
+    volume_slider.value = "1";
+    curr_track.volume = volume_slider.value /  100;
     mute.innerHTML = `<i class="fa-solid fa-volume-up"></i>`;
     isMuted = true;
 }
