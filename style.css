@@ -57,11 +57,11 @@ h1{
 }
 
 .seek_slider {
-    width: 100vh;
-    margin: 0 5vh 5vh 5vh;
+    width: 45vw;
+    margin: 0 5vw 5vh 5vw;
 }
 
 .volume_slider{
-    width: 60vh;
-    margin: 0 3vh 3vh 3vh;
+    width: 30vw;
+    margin: 0 3vw 3vh 3vw;
 }
